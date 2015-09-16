@@ -6,18 +6,31 @@
 palestras = [{"pid":"84","place":"2","date":"2","time":"1","name":"Klaibson Natal Ribeiro Borges","title":"Turbinando o LibreOffice com Extens\u00f5es","uid":"1802"},{"pid":"43","place":"3","date":"2","time":"1","name":"Jonathan Lamim Antunes","title":"Firefox OS - Liberdade al\u00e9m da web","uid":"1110"},{"pid":"21","place":"4","date":"2","time":"1","name":"Fl\u00e1vio Gomes da Silva Lisboa","title":"Gerenciamento de servi\u00e7os e eventos em PHP com Zend Framework 2","uid":"257"},{"pid":"81","place":"5","date":"2","time":"1","name":"Emerson Sachio Saito","title":"Framework Demoiselle: Java EE \u00e1gil, livre e em comunidade.","uid":"1081"},{"pid":"90","place":"2","date":"2","time":"2","name":"Vitorio Furusho","title":"LibreOffice online e LibreOffice 5.0 v\u00eaem ai","uid":"2659"},{"pid":"145","place":"3","date":"2","time":"2","name":"Eduardo Marcelo Castella","title":"Software Livre na Pol\u00edcia Civil  - Customiza\u00e7\u00e3o da Distribui\u00e7\u00e3o Linux Mint ","uid":"3519"},{"pid":"23","place":"4","date":"2","time":"2","name":"Fl\u00e1vio Gomes da Silva Lisboa","title":"Gnus, Pinguins e Cavaleiros Espaciais: a experi\u00eancia da comunidade ExpressoV3","uid":"257"},{"pid":"62","place":"5","date":"2","time":"2","name":"Paulo Gladson Ximenes Pinheiro","title":"AngularJS com JEE7","uid":"1953"},{"pid":"99","place":"2","date":"2","time":"3","name":"Vitorio Furusho","title":"O Poder do LibreOffice","uid":"2659"},{"pid":"49","place":"3","date":"2","time":"3","name":"Lincoln Herbert Teixeira","title":"Simula\u00e7\u00e3o de Infraestrutura de Redes com GNS-3","uid":"152"},{"pid":"20","place":"4","date":"2","time":"3","name":"Fl\u00e1vio Gomes da Silva Lisboa","title":"Componentes Transformers: combinando o melhor da cada framework PHP","uid":"257"},{"pid":"113","place":"5","date":"2","time":"3","name":"Daniel Araujo Domingues","title":"O setor p\u00fablico e a an\u00e1lise de dados com R","uid":"2964"},{"pid":"134","place":"1","date":"2","time":"6","name":"admin","title":"Abertura do evento","uid":"1"},{"pid":"86","place":"1","date":"2","time":"7","name":"Marcos Mazoni","title":"Software Livre um desafio a mudan\u00e7a","uid":"2555"},{"pid":"126","place":"1","date":"2","time":"8","name":"Jo\u00e3o Eriberto Mota Filho","title":"T\u00e9cnicas forenses para a recupera\u00e7\u00e3o de arquivos","uid":"2559"},{"pid":"29","place":"2","date":"2","time":"8","name":"Marjorie Roberta dos Santos Rosa ","title":"Seguran\u00e7a digital - quem \u00e9 o inimigo?","uid":"613"},{"pid":"59","place":"3","date":"2","time":"8","name":"Paulo de Souza Lima","title":"O Semantic Mediawiki Em Um Sistema De Gest\u00e3o De Processos, Registros E Documentos","uid":"1714"},{"pid":"57","place":"4","date":"2","time":"8","name":"Leandro Batista de Almeida","title":"NoSQL - armazenamento de dados al\u00e9m do modelo relacional","uid":"1693"},{"pid":"66","place":"5","date":"2","time":"8","name":"Wellton Costa de Oliveira","title":"Aprendendo Redes Neurais F\u00e1cil no GNU\/Linux","uid":"330"},{"pid":"78","place":"6","date":"2","time":"8","name":"Ricardo Camargo Barioni","title":"Followzup - Implementando o modelo B2P de comunica\u00e7\u00e3o","uid":"2441"},{"pid":"87","place":"1","date":"2","time":"11","name":"Julio Cezar Neves","title":"Assim no Shell como na terra","uid":"2557"},{"pid":"141","place":"2","date":"2","time":"11","name":"Claudio Navarro","title":"Open Innovation","uid":"3339"},{"pid":"79","place":"3","date":"2","time":"11","name":"Ricardo Camargo Barioni","title":"Followzup - Construindo interfaces de dispositivos","uid":"2441"},{"pid":"30","place":"1","date":"2","time":"12","name":"Er Galv\u00e3o Abbott","title":"PHP: Evolu\u00e7\u00e3o","uid":"615"},{"pid":"92","place":"2","date":"2","time":"12","name":"Felipe Augusto Pastore de Lima","title":"C\u00f3digo Limpo","uid":"2563"},{"pid":"123","place":"6","date":"2","time":"13","name":"admin","title":"HACKERSPACE","uid":"1"},{"pid":"129","place":"7","date":"2","time":"16","name":"admin","title":"Sala SEBRAE","uid":"1"},{"pid":"131","place":"13","date":"2","time":"16","name":"admin","title":"SALA BRDE","uid":"1"}];
 
 document.write('<table>');
-  var time = 0;
+var time = 0;
+var sala = 0;
+
 for (var i=0; i < palestras.length; i++) {
   var palestra = palestras[i];
   var idHoraPalestra = palestra.time;
   if (time != palestra.time) {
+    sala = 0;
     time = palestra.time;
     document.write('<tr><td>' + getTime(parseInt(idHoraPalestra)) + '</td>');
   }
+  var lugar = parseInt(palestra.place);
+  if (sala != lugar) {
+  document.write('<td>');
+  document.write('-');
+  document.write(lugar);
+  document.write('</td>');
+  sala++;
+  } else {
   document.write('<td>');
   document.write(palestra.title);
   document.write('-');
   document.write(palestra.name);
+  document.write('</td>');
+  }
 }
 document.write('</table>');
 </script>
